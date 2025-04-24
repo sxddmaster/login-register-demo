@@ -9,7 +9,6 @@ import java.util.Optional;
 @Mapper
 public interface UserMapper {
 
-    
     Optional<User> findByPhone(String phone);
 
     int save(User user);
