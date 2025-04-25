@@ -6,6 +6,8 @@ import com.sxd.exception.UserNotFoundException;
 import com.sxd.login.mapper.UserMapper;
 import com.sxd.login.model.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -20,6 +22,9 @@ public class UserService {
     @Autowired
     private SmsService smsService;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
     @Transactional
     public Integer register(String phone, String verificationCode, String password) {
         Optional<User> existingUser = userMapper.findByPhone(phone);
@@ -33,7 +38,11 @@ public class UserService {
 
         User user = new User();
         user.setPhone(phone);
-        user.setPassword(password);
+
+        // 加密密码
+        String hashedPassword = passwordEncoder.encode("user_password");
+
+        user.setPassword(hashedPassword);
         return userMapper.save(user);
     }
 
@@ -43,7 +52,8 @@ public class UserService {
                 .orElseThrow(UserNotFoundException::new);
 
         if (isPasswordLogin) {
-            if (!passwordOrCode.equals(user.getPassword())) {
+            // 验证密码
+            if (!passwordEncoder.matches(passwordOrCode, user.getPassword())) {
                 throw new PasswordIncorrectException();
             }
         } else {
