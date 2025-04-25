@@ -1,9 +1,8 @@
-package com.sxd.consumer.mapper;
+package com.sxd.login.mapper;
 
-import com.sxd.consumer.model.entity.User;
+import com.sxd.login.model.entity.User;
 import org.apache.ibatis.annotations.Mapper;
 
-import java.util.List;
 import java.util.Optional;
 
 @Mapper

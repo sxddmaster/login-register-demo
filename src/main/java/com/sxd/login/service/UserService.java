@@ -1,10 +1,10 @@
-package com.sxd.consumer.service;
+package com.sxd.login.service;
 
-import com.sxd.consumer.exception.InvalidSmsCodeException;
-import com.sxd.consumer.exception.PasswordIncorrectException;
-import com.sxd.consumer.exception.UserNotFoundException;
-import com.sxd.consumer.mapper.UserMapper;
-import com.sxd.consumer.model.entity.User;
+import com.sxd.exception.InvalidSmsCodeException;
+import com.sxd.exception.PasswordIncorrectException;
+import com.sxd.exception.UserNotFoundException;
+import com.sxd.login.mapper.UserMapper;
+import com.sxd.login.model.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

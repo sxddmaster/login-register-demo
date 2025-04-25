@@ -1,4 +1,4 @@
-package com.sxd.consumer.exception;
+package com.sxd.exception;
 
 public class PasswordIncorrectException extends BusinessException {
     public PasswordIncorrectException() {

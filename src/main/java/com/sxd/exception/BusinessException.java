@@ -1,4 +1,4 @@
-package com.sxd.consumer.exception;
+package com.sxd.exception;
 
 // 基础业务异常
 public class BusinessException extends RuntimeException {

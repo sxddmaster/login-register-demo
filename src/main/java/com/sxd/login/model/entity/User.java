@@ -1,4 +1,4 @@
-package com.sxd.consumer.model.entity;
+package com.sxd.login.model.entity;
 
 import lombok.Data;
 

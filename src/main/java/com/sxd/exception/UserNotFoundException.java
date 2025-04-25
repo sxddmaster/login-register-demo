@@ -1,4 +1,4 @@
-package com.sxd.consumer.exception;
+package com.sxd.exception;
 
 // 具体业务异常
 public class UserNotFoundException extends BusinessException {

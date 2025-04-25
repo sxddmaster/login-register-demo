@@ -1,4 +1,4 @@
-package com.sxd.consumer.exception;
+package com.sxd.exception;
 
 public class InvalidSmsCodeException extends BusinessException {
     public InvalidSmsCodeException() {

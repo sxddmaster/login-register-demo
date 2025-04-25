@@ -1,9 +1,6 @@
-package com.sxd.consumer.controller;
+package com.sxd.login.controller;
 
-import com.sxd.consumer.mapper.UserMapper;
-import com.sxd.consumer.model.entity.User;
-import com.sxd.consumer.service.SmsService;
-import com.sxd.consumer.service.UserService;
+import com.sxd.login.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,11 +8,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.annotation.Resource;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 
 @RestController
 public class UserController {
@@ -25,11 +19,19 @@ public class UserController {
     UserService userService;
 
 
+    /**
+     * 注册
+     * @param phone
+     * @param verificationCode
+     * @param password
+     * @return
+     */
     @GetMapping("register")
     public String register(@RequestParam String phone,
                            @RequestParam String verificationCode,
                            @RequestParam String password){
         userService.register(phone, verificationCode, password);
+        ResponseEntity.ok().body("<UNK>");
         return "注册成功";
     }
 
@@ -50,7 +52,8 @@ public class UserController {
 
     /**
      * 发送验证码
-     * URL: POST /auth/sendCode?phone=13800000000
+     * @param phone
+     * @return
      */
     @PostMapping("/sendCode")
     public ResponseEntity<?> sendCode(@RequestParam String phone) {
