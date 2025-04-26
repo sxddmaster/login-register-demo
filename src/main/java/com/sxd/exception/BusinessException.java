@@ -1,6 +1,6 @@
 package com.sxd.exception;
 
-// 基础业务异常
+// 基础业务异常，其他异常继承这个类即可
 public class BusinessException extends RuntimeException {
     private final int code;
     

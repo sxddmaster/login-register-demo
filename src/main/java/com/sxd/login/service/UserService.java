@@ -2,6 +2,7 @@ package com.sxd.login.service;
 
 import com.sxd.exception.InvalidSmsCodeException;
 import com.sxd.exception.PasswordIncorrectException;
+import com.sxd.exception.UserHasRegisterException;
 import com.sxd.exception.UserNotFoundException;
 import com.sxd.login.mapper.UserMapper;
 import com.sxd.login.model.entity.User;
@@ -28,12 +29,13 @@ public class UserService {
     @Transactional
     public Integer register(String phone, String verificationCode, String password) {
         Optional<User> existingUser = userMapper.findByPhone(phone);
+
         if (existingUser.isPresent()) {
-            throw new RuntimeException("手机号已被注册");
+            throw new UserHasRegisterException();
         }
 
         if (!smsService.verifyCode(phone, verificationCode)) {
-            throw new RuntimeException("验证码错误");
+            throw new InvalidSmsCodeException();
         }
 
         User user = new User();
@@ -65,6 +67,10 @@ public class UserService {
         return user;
     }
 
+    /**
+     * 发送验证码并保存到redis
+     * @param phone
+     */
     public void sendVerificationCode(String phone) {
         String verificationCode = smsService.generateVerificationCode();
         smsService.sendSms(phone, verificationCode);

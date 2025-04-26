@@ -1,5 +1,6 @@
 package com.sxd.result;
 
+import com.sxd.enums.ResultCode;
 import lombok.Data;
 
 @Data

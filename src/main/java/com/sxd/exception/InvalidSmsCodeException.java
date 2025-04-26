@@ -2,6 +2,6 @@ package com.sxd.exception;
 
 public class InvalidSmsCodeException extends BusinessException {
     public InvalidSmsCodeException() {
-        super(10003, "验证码错误");
+        super(10004, "验证码错误");
     }
 }

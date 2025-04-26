@@ -1,8 +1,7 @@
-package com.sxd.exception;
+package com.sxd.config;
 
+import com.sxd.exception.BusinessException;
 import com.sxd.result.ApiResponse;
-import lombok.AllArgsConstructor;
-import lombok.Data;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;

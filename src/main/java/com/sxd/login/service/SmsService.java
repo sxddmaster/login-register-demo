@@ -22,6 +22,12 @@ public class SmsService {
         // 发送短信逻辑
     }
 
+    /**
+     * 从redis获取验证码
+     * @param phone
+     * @param code
+     * @return
+     */
     public boolean verifyCode(String phone, String code) {
         String redisKey = VERIFICATION_CODE_PREFIX + phone;
         String storedCode = redisTemplate.opsForValue().get(redisKey);

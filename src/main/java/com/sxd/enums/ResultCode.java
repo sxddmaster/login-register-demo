@@ -1,4 +1,4 @@
-package com.sxd.result;
+package com.sxd.enums;
 
 public enum ResultCode {
     SUCCESS(200, "成功"),
